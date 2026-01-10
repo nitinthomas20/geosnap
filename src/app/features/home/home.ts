@@ -1,5 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './home.scss'
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   onStartClick() {
     this.router.navigate(['/play']); // Navigate to the game path

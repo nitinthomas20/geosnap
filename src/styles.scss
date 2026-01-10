@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global background for html/body */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background: #0f172a; /* Dark Slate */
+  background-image: radial-gradient(circle at 2px 2px, #334155 1px, transparent 0);
+  background-size: 40px 40px;
+  font-family: sans-serif;
+  color: white;
+}
