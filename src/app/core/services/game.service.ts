@@ -38,6 +38,13 @@ export class GameService {
     return result;
   }
 
+ 
+  // START NEW GAME
+  startNewGame() {
+    this.results.set([]);
+    this.currentRoundIndex.set(0);
+  }
+
  // MOVE TO NEXT ROUND
   nextRound(): boolean {
     if (!this.isGameOver()) {

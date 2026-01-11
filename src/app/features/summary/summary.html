@@ -1,1 +1,49 @@
-<p>summary works!</p>
+<div class="summary-container">
+    @let allResults = game.results();
+    @let totalScore = game.totalScore();
+    @let totalPossible = locationService.locations().length * 15;
+
+    <div class="score-header">
+      <h1>Investigation Complete</h1>
+      <div class="total-circle">
+        <span class="score-value">{{ totalScore }}</span>
+        <br/>
+        <span class="score-label"> /{{ totalPossible }}</span>
+      </div>
+    </div>
+
+    <div class="feedback-table">
+      <h3>Round Breakdown</h3>
+      
+      <div class="table-header">
+        <span>Location</span>
+        <span>Distance</span>
+        <span>Points</span>
+      </div>
+
+      @for (round of allResults; track round.locationId; let i = $index) {
+        <div class="table-row">
+          <span class="round-num">#{{ i + 1 }}</span>
+          
+          <span class="round-dist">
+            {{ round.distance }} km
+          </span>
+
+          <span class="round-pts" [class.zero]="round.points === 0">
+            +{{ round.points }}
+          </span>
+        </div>
+      } @empty {
+        <div class="no-data">No investigation data found.</div>
+      }
+    </div>
+
+    <div class="action-footer">
+      <button class="btn-primary" (click)="playAgain()">
+        NEW GAME
+      </button>
+      <button class="btn-secondary" routerLink="/history">
+        VIEW HISTORY
+      </button>
+    </div>
+</div>

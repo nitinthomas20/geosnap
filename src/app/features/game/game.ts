@@ -5,6 +5,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { computed } from '@angular/core';
 import { LocationService } from '../../core/services/game-location.service';
 import { MapViewComponent } from '../../shared/components/map-view/map-view';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -15,6 +16,7 @@ import { MapViewComponent } from '../../shared/components/map-view/map-view';
 export class GameComponent  {
 
   // INJECTIONS
+  private readonly router = inject(Router);
   readonly gameService = inject(GameService);
   readonly locationService = inject(LocationService);
 
@@ -49,7 +51,7 @@ export class GameComponent  {
     this.userLng.set(0);
     this.hint.set(false);
      if (this.gameService.nextRound()) {;
-      console.log('Game Over! Final Score:', this.gameService.totalScore());
+      this.router.navigate(['/summary']);
     }
   }
 
