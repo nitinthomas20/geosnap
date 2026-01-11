@@ -1,10 +1,10 @@
 export const environment = {
     firebase: {
-  apiKey: "AIzaSyCviAPEdI4Pk9AxBgI8Ioo2H6CmhCg-06E",
-  authDomain: "geogame-0001.firebaseapp.com",
-  projectId: "geogame-0001",
-  storageBucket: "geogame-0001.firebasestorage.app",
-  messagingSenderId: "605654199834",
-  appId: "1:605654199834:web:4921cbb30f74333ebfaba3"
+  apiKey: "AIzaSyA9XtwOSGFc-4yBB24tfwLnGbRo8xnpXlo",
+  authDomain: "geosnap-001.firebaseapp.com",
+  projectId: "geosnap-001",
+  storageBucket: "geosnap-001.firebasestorage.app",
+  messagingSenderId: "963641916078",
+  appId: "1:963641916078:web:8772f17f15ce660cde8b3f"
 }
-};
+}
