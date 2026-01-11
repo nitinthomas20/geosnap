@@ -9,7 +9,7 @@ import { inject } from '@angular/core';
   styleUrl: './home.scss'
 })
 export class HomeComponent {
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
   onStartClick() {
     this.router.navigate(['/play']); // Navigate to the game path

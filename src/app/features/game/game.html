@@ -1,1 +1,61 @@
-<p>game works!</p>
+@let location = gameService.currentLocation();
+@let round = gameService.currentRoundIndex();
+@let isLastRound = gameService.isGameOver();
+@let totalScore = gameService.totalScore();
+@let locations = locationService.locations();
+<main class="app-layout">
+  <header class="game-header">
+    <div class="logo">GEOGUESSR</div>
+    <div class="score-board">
+      <div class="score-item">
+        <span class="label">SCORE</span>
+        <span class="value">{{ totalScore }}</span>
+      </div>
+      <div class="score-item">
+        <span class="label">ROUND</span>
+        <span class="value">{{ round + 1 }} / {{ locations.length }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="game-container">
+    <div class="image-section">
+        <div
+        class="image-viewport">
+        <img
+          [ngSrc]="location.imageUrl"
+          width="800"
+          height="800"
+          priority
+        />
+        </div>
+    </div>
+    
+
+    <div class="control-section">
+      <div class="control-content-wrapper">
+        <div class="sidebar-content">
+          <button class="outline-btn hint-btn" (click)="showHint()">Hint</button>
+          @if (hint()) {
+            <p class="hint-text"><strong>Hint:</strong> {{ location.description }}</p>
+          }
+
+          <div class="inputs">
+            <div class="input-group">
+              <label>LATITUDE</label>
+              <input type="number" [(ngModel)]="userLat" placeholder="0.0000" />
+            </div>
+            <div class="input-group">
+              <label>LONGITUDE</label>
+              <input type="number" [(ngModel)]="userLng" placeholder="0.0000" />
+            </div>
+          </div>
+
+            <button class="main-btn submit-btn" (click)="handleGuess()">
+              {{ isLastRound ? 'Finish Game' : 'Submit Coordinates' }}
+            </button>
+          
+        </div> 
+      </div> 
+    </div> 
+  </div> 
