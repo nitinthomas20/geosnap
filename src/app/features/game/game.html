@@ -20,17 +20,38 @@
   <div class="game-container">
     @if (!showResult()) {
       <div class="image-section">
-        <div class="image-viewport">
+        <div class="image-viewport"
+        (mousedown)="startDrag($event)"
+        (mousemove)="onDrag($event)"
+        (mouseup)="endDrag()"
+        (mouseleave)="endDrag()"
+        [class.dragging]="isDragging()"
+>
             <img 
             [ngSrc]="location.imageUrl"
+            [style.transform]="imageTransform()"
             width="800"
             height="800"
             priority 
+            class="zoomable-image"
+            draggable="false"
             />
+            <div class="zoom-controls-bar">
+            <button (click)="zoomIn()" title="Zoom In">➕</button>
+            <button (click)="zoomOut()" title="Zoom Out">➖</button>
+            <button (click)="resetZoom()" title="Reset view">⌖</button>
+            
+            <span class="zoom-label">{{ (zoomLevel() * 100).toFixed(0) }}%</span>
+
         </div>
       </div>
-
-    <div class="control-section">
+      </div>
+       <div class="control-section" [class.collapsed]="isCollapsed()">
+        <div class="control-header" (click)="isCollapsed.set(!isCollapsed())">
+          <span class="toggle-icon">
+            {{ isCollapsed() ? '🔼' : '🔽' }}
+          </span>
+        </div>
       <div class="control-content-wrapper">
         <div class="sidebar-content">
           <button class="outline-btn hint-btn" (click)="showHint()">Hint</button>
