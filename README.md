@@ -5,6 +5,8 @@ of real-world locations based on images.
 
 The goal is to test geographical intuition and attention to visual detail.
 
+🚀 Live Demo: https://geosnap-001.web.app/
+
 ---
 
 ## 🎮 How It Works
