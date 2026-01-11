@@ -1,1 +1,11 @@
-<p>map-view works!</p>
+<body>
+    <div class="map-container">
+      <div id="map"></div>
+      <div class="overlay">
+        <h3>Result</h3>
+        <p >You were <strong>{{ distance().toFixed(2) }} km</strong> away.</p>
+        <p >You got <strong>{{points()}}</strong> points for this challenge!</p>
+        <button (click)="next.emit()">Next Challenge</button>
+      </div>
+    </div>
+</body>

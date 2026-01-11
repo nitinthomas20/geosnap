@@ -1,36 +1,34 @@
-@let location = gameService.currentLocation();
-@let round = gameService.currentRoundIndex();
-@let isLastRound = gameService.isGameOver();
-@let totalScore = gameService.totalScore();
-@let locations = locationService.locations();
 <main class="app-layout">
+  @let location = gameService.currentLocation();
+  @let locations = locationService.locations();
+  @let result = lastResult();
+
   <header class="game-header">
-    <div class="logo">GEOGUESSR</div>
+    <div class="logo">GEOSNAP</div>
     <div class="score-board">
       <div class="score-item">
         <span class="label">SCORE</span>
-        <span class="value">{{ totalScore }}</span>
+        <span class="value">{{ gameService.totalScore() }}</span>
       </div>
       <div class="score-item">
         <span class="label">ROUND</span>
-        <span class="value">{{ round + 1 }} / {{ locations.length }}</span>
+        <span class="value">{{ gameService.currentRoundIndex() + 1 }} / {{ locations.length }}</span>
       </div>
     </div>
   </header>
 
   <div class="game-container">
-    <div class="image-section">
-        <div
-        class="image-viewport">
-        <img
-          [ngSrc]="location.imageUrl"
-          width="800"
-          height="800"
-          priority
-        />
+    @if (!showResult()) {
+      <div class="image-section">
+        <div class="image-viewport">
+            <img 
+            [ngSrc]="location.imageUrl"
+            width="800"
+            height="800"
+            priority 
+            />
         </div>
-    </div>
-    
+      </div>
 
     <div class="control-section">
       <div class="control-content-wrapper">
@@ -51,11 +49,20 @@
             </div>
           </div>
 
-            <button class="main-btn submit-btn" (click)="handleGuess()">
-              {{ isLastRound ? 'Finish Game' : 'Submit Coordinates' }}
-            </button>
-          
-        </div> 
-      </div> 
-    </div> 
-  </div> 
+          <button class="main-btn submit-btn" (click)="handleGuess()">
+            {{ gameService.isGameOver() ? 'Finish Game' : 'Submit Coordinates' }}
+          </button>
+        </div>
+      </div>
+    </div>
+    } @else {
+      <app-map-view
+        [userCoords]="{ lat: userLat(), lng: userLng() }"
+        [actualCoords]="{ lat: location.lat, lng: location.lng }"
+        [distance]="result?.distance ?? 0" 
+        [points]="result?.points ?? 0"
+        (next)="resetRound()"
+      ></app-map-view>
+    }
+  </div>
+</main>

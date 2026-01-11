@@ -1,0 +1,71 @@
+h3, p {
+  color: black;
+  margin-top: 0;
+}
+
+.map-container {
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background: white;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  bottom: 20px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px 15px;
+  font-size: 1rem;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    bottom: 50px;
+    width: auto;
+    min-width: 400px;
+    max-width: 600px;
+    padding: 30px;
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: auto;
+    min-width: 200px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+  }
+}
+
+::ng-deep .custom-svg-icon {
+  background: transparent;
+  border: none;
+}
