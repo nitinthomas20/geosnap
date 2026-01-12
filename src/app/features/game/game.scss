@@ -1,3 +1,4 @@
+
 :host {
   --bg-dark: #0f172a;
   --bg-darker: #0b1120;
@@ -9,56 +10,80 @@
   --border-color: #334155;
 }
 
-
+/* =============================
+   ROOT & APP LAYOUT
+============================= */
+app-street-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 .app-layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-light);
   overflow: hidden;
 }
+
+/* =============================
+   HEADER & SCORE
+============================= */
 .game-header {
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 24px;
-    background: var(--bg-darker);
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background: var(--bg-darker);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
 }
+
 .logo {
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: white;
-    text-shadow: 2px 2px 0px #b91c1c;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 0px #b91c1c;
 }
+
 .score-board {
-    display: flex;
-    gap: 20px;
-    text-align: right;
+  display: flex;
+  gap: 20px;
+  text-align: right;
 }
+
 .score-item .label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    font-weight: 700;
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 700;
 }
+
 .score-item .value {
-    font-weight: 700;
-    font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
+
+/* =============================
+   MAIN GAME CONTAINER
+============================= */
 .game-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 20px;
-    gap: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  gap: 20px;
 }
+
+/* =============================
+   IMAGE SECTION
+============================= */
 .image-section {
   flex: 1;
   position: relative;
@@ -68,9 +93,9 @@
   border-radius: 16px;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
-  /* Add transition for smooth resizing */
   transition: flex-basis 0.3s ease-in-out;
 }
+
 .image-viewport {
   flex: 1;
   position: relative;
@@ -85,9 +110,11 @@
   user-select: none;
   border-radius: 16px;
 }
+
 .image-viewport.dragging {
   cursor: grabbing;
 }
+
 .zoomable-image {
   max-width: 100%;
   max-height: 100%;
@@ -95,6 +122,10 @@
   object-fit: contain;
   pointer-events: none;
 }
+
+/* =============================
+   ZOOM CONTROLS
+============================= */
 .zoom-controls-bar {
   position: absolute;
   bottom: 20px;
@@ -111,6 +142,7 @@
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
+
 .zoom-controls-bar button {
   background: transparent;
   color: var(--text-muted);
@@ -125,21 +157,30 @@
   justify-content: center;
   transition: all 0.2s;
 }
+
 .zoom-controls-bar button:hover {
-    background: var(--border-color);
-    color: white;
+  background: var(--border-color);
+  color: white;
 }
-.icon-placeholder { font-size: 1.2rem; }
+
+.icon-placeholder {
+  font-size: 1.2rem;
+}
+
 .zoom-label {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-left: 8px;
-    min-width: 40px;
-    text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 8px;
+  min-width: 40px;
+  text-align: center;
 }
-/* --- SIDEBAR CONTROLS --- */
+
+/* =============================
+   SIDEBAR CONTROLS
+============================= */
 .control-section {
+  position: relative;
   background: var(--bg-card);
   border-radius: 16px;
   border: 1px solid var(--border-color);
@@ -147,11 +188,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Add transitions for width and height changes */
   transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  flex-shrink: 0; /* Prevent shrinking smaller than content/collapsed state */
+  flex-shrink: 0;
 }
-/* NEW: Header button for toggling */
+
 .control-header {
   height: 40px;
   display: flex;
@@ -162,67 +202,82 @@
   background: var(--bg-darker);
   font-size: 1.2rem;
   color: var(--text-muted);
-  flex-shrink: 0; /* Header size is fixed */
+  flex-shrink: 0;
   transition: background 0.2s, color 0.2s;
 }
+
 .control-header:hover {
-    background: var(--border-color);
-    color: var(--text-light);
+  background: var(--border-color);
+  color: var(--text-light);
 }
-/* NEW: Wrapper for collapsible content */
+
 .control-content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    /* Setup for smooth height transition on mobile */
-    max-height: 1000px; /* Arbitrary large enough value */
-    opacity: 1;
-    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
 }
+
 .sidebar-content {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: min-content; /* Ensure content defines height */
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min-content;
 }
-/* --- MOBILE COLLAPSED STATE --- */
+
+/* =============================
+   COLLAPSED STATE (MOBILE)
+============================= */
 .control-section.collapsed .control-content-wrapper {
-    max-height: 0;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
+
 .control-section.collapsed .control-header {
-    border-bottom: none;
+  border-bottom: none;
 }
-/* Buttons & Inputs */
-button { cursor: pointer; transition: all 0.2s; }
+
+/* =============================
+   BUTTONS & INPUTS
+============================= */
+button {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
 .outline-btn {
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    color: var(--text-light);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
+
 .outline-btn:hover {
-    border-color: var(--text-muted);
-    background: rgba(255,255,255, 0.05);
+  border-color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
 }
+
 .hint-text {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    background: rgba(59, 130, 246, 0.1);
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-blue);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-blue);
 }
+
 .inputs {
   display: flex;
   gap: 16px;
@@ -230,12 +285,14 @@ button { cursor: pointer; transition: all 0.2s; }
   flex-direction: column;
   margin-top: auto;
 }
+
 .input-group {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .input-group label {
   font-size: 0.7rem;
   font-weight: 700;
@@ -243,6 +300,7 @@ button { cursor: pointer; transition: all 0.2s; }
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 input {
   padding: 12px 16px;
   border: 2px solid var(--border-color);
@@ -253,11 +311,16 @@ input {
   transition: all 0.2s;
   font-family: monospace;
 }
+
 input:focus {
   border-color: var(--primary-blue);
   outline: none;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
+
+/* =============================
+   SUBMIT BUTTON
+============================= */
 .main-btn.submit-btn {
   width: 100%;
   padding: 16px;
@@ -269,39 +332,46 @@ input:focus {
   font-size: 1.1rem;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
+
 .submit-btn:hover {
-    filter: brightness(1.1);
-    transform: translateY(-2px);
+  filter: brightness(1.1);
+  transform: translateY(-2px);
 }
-.submit-btn:active { transform: translateY(0); }
-/* --- RESPONSIVE LAYOUT --- */
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* =============================
+   RESPONSIVE (DESKTOP)
+============================= */
 @media (min-width: 900px) {
   .game-container {
-      flex-direction: row;
+    flex-direction: row;
   }
+
   .image-section {
-    flex: 3; /* Image takes more space */
+    flex: 3;
   }
+
   .control-section {
-    width: 350px; /* Fixed width for sidebar */
-    height: auto; /* Height is determined by content */
+    width: 350px;
+    height: auto;
   }
-  /* --- DESKTOP COLLAPSED STATE --- */
+
   .control-section.collapsed {
-      width: 60px; /* Slim width when collapsed */
+    width: 60px;
   }
-  /* Adjust content wrapper for desktop collapse */
+
   .control-section.collapsed .control-content-wrapper {
-      /* Reset mobile max-height hack */
-      max-height: unset;
-      /* Hide content via opacity and visibility */
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0s linear 0.2s; /* Delay visibility hide */
+    max-height: unset;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0s linear 0.2s;
   }
-  /* Center the icon in the slim sidebar */
+
   .control-section.collapsed .control-header {
-      height: 100%;
-      border-bottom: none;
+    height: 100%;
+    border-bottom: none;
   }
 }

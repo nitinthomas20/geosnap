@@ -26,7 +26,7 @@
           <span class="round-num">#{{ i + 1 }}</span>
           
           <span class="round-dist">
-            {{ round.distance }} km
+            {{ round.distance }} m 
           </span>
 
           <span class="round-pts" [class.zero]="round.points === 0">
@@ -42,8 +42,7 @@
       <button class="btn-primary" (click)="playAgain()">
         NEW GAME
       </button>
-      <button class="btn-secondary" routerLink="/history">
-        VIEW HISTORY
-      </button>
+      <br/>
+     
     </div>
 </div>

@@ -6,10 +6,11 @@ import { computed } from '@angular/core';
 import { LocationService } from '../../core/services/game-location.service';
 import { MapViewComponent } from '../../shared/components/map-view/map-view';
 import { Router } from '@angular/router';
+import { StreetViewComponent } from '../../shared/components/street-view/steet-view';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [FormsModule, NgOptimizedImage, MapViewComponent],
+  imports: [FormsModule, NgOptimizedImage, MapViewComponent,StreetViewComponent],
   templateUrl: './game.html',
   styleUrl: './game.scss'
 })

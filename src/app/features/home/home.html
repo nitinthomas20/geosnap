@@ -1,19 +1,45 @@
-
-<body>
-    <div class="landing-hero">
-      <div class="glass-card">
-        <span class="logo-icon">🔍</span>
-        <h1>Geo Guessar</h1>
-        <p>Analyze the environment, find the landmarks, and pinpoint the exact coordinates.</p>
-        
-        <div class="stats-preview">
-          <div class="stat"><span>3</span> Challenges</div>
-          <div class="stat"><span>KM</span> Precision</div>
-        </div>
-
-        <button class="start-btn" (click)="onStartClick()">
-          Begin Exploring
-        </button>
+<div class="landing-hero">
+  <div class="glass-card">
+    <span class="logo-icon">🔍</span>
+    <h1>Geo Guessar</h1>
+    <p>Analyze the environment, find the landmarks, and pinpoint the exact coordinates.</p>
+    
+    <div class="stats-preview">
+      <div class="stat"><span>3</span> Challenges</div>
+      <div class="stat" (click)="showRules.set(true)" style="cursor: pointer;">
+        <span>Game</span> Rules
       </div>
     </div>
-</body>
+
+    <div class="start-buttons">
+      <button class="start-btn" (click)="onStartClick()">Detective Mode</button>
+      <button class="start-btn" (click)="handleAdvancedClick()">Explorer Mode</button>
+    </div>
+  </div>
+</div>
+
+@if (showRules()) {
+  <<div class="modal-overlay" (click)="showRules.set(false)">
+  <div class="modal-content glass-card-alt" (click)="$event.stopPropagation()">
+    <h2>Mission Briefing</h2>
+    
+    <ul class="rules-list">
+      <li>📍 <strong>Analyze:</strong> Examine architecture, signs, and flora to identify the location.</li>
+      <li>🗺️ <strong>Pinpoint:</strong> Enter the <i>latitude</i> and <i>longitude</i>.</li>
+    </ul>
+
+    <div class="scoring-guide">
+      <h3>Scoring Protocol</h3>
+      <ul class="rules-list">
+        <li>🎯 <strong>15 Points:</strong> Awarded for a "Bullseye" (Exact match).</li>
+        <li>📏 <strong>Proximity:</strong> The closer you are, the higher the score.</li>
+        <li>🛑 <strong>50 Metre Limit:</strong> No points are awarded beyond 50m.</li>
+      </ul>
+    </div>
+
+    <button class="start-btn close-btn" (click)="showRules.set(false)">
+      Understood
+    </button>
+  </div>
+</div>
+}
