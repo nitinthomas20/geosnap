@@ -2,6 +2,7 @@
   @let location = gameService.currentLocation();
   @let locations = locationService.locations();
   @let result = lastResult();
+  @let gameMode = gameService.gameMode();
 
   <header class="game-header">
     <div class="logo">GEOSNAP</div>
@@ -20,6 +21,12 @@
   <div class="game-container">
     @if (!showResult()) {
       <div class="image-section">
+        @if (gameMode === 'advanced') {
+         <app-street-view 
+            [lat]=location.lat 
+            [lng]=location.lng>
+          </app-street-view>
+        } @else {
         <div class="image-viewport"
         (mousedown)="startDrag($event)"
         (mousemove)="onDrag($event)"
@@ -44,7 +51,7 @@
             <span class="zoom-label">{{ (zoomLevel() * 100).toFixed(0) }}%</span>
 
         </div>
-      </div>
+      </div>}
       </div>
        <div class="control-section" [class.collapsed]="isCollapsed()">
         <div class="control-header" (click)="isCollapsed.set(!isCollapsed())">

@@ -1,3 +1,4 @@
+
 /* -------------------- */
 /* Global Base Styles */
 /* -------------------- */
@@ -26,7 +27,7 @@
   align-items: center;
   justify-content: center;
   background: inherit;
-
+}
   .glass-card {
     background: transparent;
     backdrop-filter: blur(1px);
@@ -68,23 +69,43 @@
       }
     }
 
-    .start-btn {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 12px;
-      border: none;
-      background: #3b82f6;
-      color: white;
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+     .start-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Modern way to handle spacing instead of margins */
+  max-width: 300px; /* Prevents buttons from becoming too wide on desktop */
+  margin: 20px auto; /* Centers the button container */
+}
 
-      &:hover {
-        background: #2563eb;
-        transform: scale(1.02);
-      }
-    }
+.start-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover & Active States */
+.start-btn:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.start-btn:active {
+  transform: translateY(0);
+}
+
+/* Focused state for keyboard accessibility */
+.start-btn:focus-visible {
+  outline: 3px solid #c7d2fe;
+  outline-offset: 2px;
+}
   }
 
   /* -------------------- */
@@ -126,6 +147,7 @@
       padding: 1.5rem;
       max-width: 95%;
     }
+     
 
     h1 {
       font-size: 1.7rem;
@@ -158,4 +180,9 @@
       padding: 0.7rem;
     }
   }
-}
+     .start-buttons {
+    display: flex;}
+    .start-btn {
+      flex: 1;
+      margin: 0 0.5rem;
+    }

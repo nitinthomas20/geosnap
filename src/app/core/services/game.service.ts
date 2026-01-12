@@ -13,6 +13,7 @@ export class GameService {
   //  STATE
   readonly results = signal<ResultModel[]>([]);
   readonly currentRoundIndex = signal(0);
+  readonly gameMode = signal<'basic' | 'advanced'>('advanced');
 
  
 
