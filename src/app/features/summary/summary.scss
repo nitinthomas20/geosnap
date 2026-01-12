@@ -60,7 +60,8 @@ $error: #f87171;
 
   .score-label {
     font-size: 1rem;
-    color: $text-muted;
+    color: $primary;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 0.25rem;
@@ -103,7 +104,7 @@ $error: #f87171;
   .round-num { font-weight: 600; color: $text-muted; }
   .round-dist { color: $text-main; }
   .round-pts { 
-    text-align: right; 
+    text-align: center; 
     color: $success; 
     font-weight: bold;
     

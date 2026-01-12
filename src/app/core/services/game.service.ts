@@ -59,7 +59,7 @@ export class GameService {
  
   //   LOGIC FOR DISTANCE 
   calculateDistance(lat1: number, lon1: number): number {
-    const R = 6371; 
+    const R = 6371000; // Radius in METRES
     const lat2 = this.currentLocation().lat;
     const lon2 = this.currentLocation().lng;
     const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -73,11 +73,8 @@ export class GameService {
   // LOGIC FOR POINTS BASED ON DISTANCE
    calculatePoints(distance: number): number {
     if (distance > 50) return 0;
-    if (distance <= 1) return 15;
-    if (distance <= 10) return 12;
-    if (distance <= 20) return 9;
-    if (distance <= 30) return 6;
-    if (distance <= 40) return 3;
-    return 1;
+    const k = 20; 
+    const score = 15 * Math.exp(-distance / k);
+    return Math.round(score);
   }
 }
